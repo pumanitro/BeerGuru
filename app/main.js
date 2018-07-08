@@ -4,8 +4,9 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
-import CombinedReducers from './redux/reducers/index';
 import createSagaMiddleware from 'redux-saga';
+import CombinedReducers from './redux/reducers/index';
+import RootSaga from './redux/sagas/RootSaga';
 
 import Root from './config/Root';
 
@@ -29,6 +30,8 @@ const render = (Component) => {
         document.getElementById('root'),
     );
 };
+
+sagaMiddleware.run(RootSaga);
 
 render(Root);
 
