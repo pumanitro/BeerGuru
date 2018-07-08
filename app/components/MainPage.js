@@ -22,7 +22,6 @@ const MainPage = ({getMoreBeers, beers}) => {
                     hasMore={true || false}
                     threshold={100}
                     loader={<div className="loader" key={0}>Loading ...</div>}
-                    useWindow={false}
                 >
                     <BeersList beers={beers} />
                 </InfiniteScroll>
