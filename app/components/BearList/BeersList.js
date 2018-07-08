@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 import {OrderedMap} from 'immutable';
 
 const BeersList = ({beers}) => {
@@ -20,8 +19,4 @@ BeersList.propTypes = {
     beers: PropTypes.instanceOf(OrderedMap).isRequired
 };
 
-const mapStateToProps = state => ({
-    beers: state.beers
-});
-
-export default connect(mapStateToProps, null)(BeersList);
+export default BeersList;

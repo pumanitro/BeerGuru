@@ -1,9 +1,11 @@
+import {Consts} from '../Constants';
+
 class BeerService {
 
     constructor() {
         this.API_CONSTS = {
             ROOT_ENDPOINT: 'https://api.punkapi.com/v2/beers',
-            BEERS_PER_PAGE: 20
+            BEERS_PER_PAGE: Consts.BEERS_PER_PAGE
         };
     }
 

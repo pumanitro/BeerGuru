@@ -1,12 +1,20 @@
-import {takeEvery, call, put} from 'redux-saga/effects';
+import {
+    takeEvery, call, put, select
+} from 'redux-saga/effects';
+
 import {ActionTypes} from '../actions/ActionTypes';
 import BeerService from '../../services/BeerService';
+import {Consts} from '../../Constants';
 
 function* getMoreBeers() {
 
     try {
 
-        const moreBeers = yield call(BeerService.getMoreBeers, 1);
+        const beers = yield select(state => state.beers);
+
+        const beerPage = Math.floor(beers.size / Consts.BEERS_PER_PAGE) + 1;
+
+        const moreBeers = yield call(BeerService.getMoreBeers, beerPage);
 
         yield put({
             type: ActionTypes.beers.GET_MORE_BEERS_SUCCEEDED,

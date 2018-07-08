@@ -7,7 +7,7 @@ import {makeAction} from '../redux/actions/ActionCreator';
 import {ActionTypes} from '../redux/actions/ActionTypes';
 import BeersList from './BearList/BeersList';
 
-const MainPage = ({getMoreBeers}) => {
+const MainPage = ({getMoreBeers, beers}) => {
 
     const loadMoreBeers = () => {
         getMoreBeers();
@@ -18,13 +18,13 @@ const MainPage = ({getMoreBeers}) => {
             <h1>Beer App</h1>
             <div className={styles['infinite__container']}>
                 <InfiniteScroll
-                    pageStart={0}
                     loadMore={loadMoreBeers}
                     hasMore={true || false}
+                    threshold={100}
                     loader={<div className="loader" key={0}>Loading ...</div>}
                     useWindow={false}
                 >
-                    <BeersList />
+                    <BeersList beers={beers} />
                 </InfiniteScroll>
             </div>
         </div>
@@ -35,8 +35,12 @@ MainPage.propTypes = {
     getMoreBeers: PropTypes.func.isRequired
 };
 
+const mapStateToProps = state => ({
+    beers: state.beers
+});
+
 const mapDispatchToProps = {
     getMoreBeers: makeAction(ActionTypes.beers.GET_MORE_BEERS)
 };
 
-export default connect(null, mapDispatchToProps)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
