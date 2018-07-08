@@ -56,7 +56,13 @@ const config = {
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [
-                        'css-loader',
+                        {
+                            loader: 'css-loader',
+                            query: {
+                                modules: true,
+                                localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
+                            },
+                        },
                         { loader: 'sass-loader', query: { sourceMap: false } },
                     ],
                     publicPath: '../'
