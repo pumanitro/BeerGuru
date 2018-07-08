@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './MainPage.scss';
 import {makeAction} from '../redux/actions/ActionCreator';
 import {ActionTypes} from '../redux/actions/ActionTypes';
+import BeersList from './BearList/BeersList';
 
 const MainPage = ({getMoreBeers}) => {
 
@@ -23,7 +24,7 @@ const MainPage = ({getMoreBeers}) => {
                     loader={<div className="loader" key={0}>Loading ...</div>}
                     useWindow={false}
                 >
-                    <div> test </div>
+                    <BeersList />
                 </InfiniteScroll>
             </div>
         </div>
