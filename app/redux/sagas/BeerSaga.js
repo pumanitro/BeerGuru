@@ -1,4 +1,4 @@
-import {takeEvery} from 'redux-saga/effects';
+import {takeEvery, call, put} from 'redux-saga/effects';
 import {ActionTypes} from '../actions/ActionTypes';
 import BeerService from '../../services/BeerService';
 
@@ -6,7 +6,12 @@ function* getMoreBeers() {
 
     try {
 
-        BeerService.test();
+        const moreBeers = yield call(BeerService.getMoreBeers, 1);
+
+        yield put({
+            type: ActionTypes.beers.GET_MORE_BEERS_SUCCEEDED,
+            payload: moreBeers
+        });
 
     }
     catch (e) {
