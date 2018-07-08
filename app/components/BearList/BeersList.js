@@ -9,7 +9,7 @@ const BeersList = ({beers}) => {
         <div>
             {
                 beers.valueSeq().map((beer) => {
-                    return <Beer key={beer.id} beerData={beer} />;
+                    return <Beer key={beer.id} beer={beer} />;
                 })
             }
         </div>

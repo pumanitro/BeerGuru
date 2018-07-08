@@ -1,18 +1,21 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Beer.scss';
 
-const Beer = ({beerData}) => {
+const Beer = ({beer}) => {
 
     return (
         <div>
-            {beerData.name}
+            <img className={styles['beer__img']} src={beer.image_url} alt={`Beer - ${beer.name}`} />
+            <h2>{beer.name}</h2>
+            <p>{beer.tagline}</p>
         </div>
     );
 };
 
 Beer.propTypes = {
-    beerData: PropTypes.object.isRequired
+    beer: PropTypes.object.isRequired
 };
 
 export default Beer;
