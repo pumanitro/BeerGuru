@@ -6,10 +6,10 @@ import styles from './Beer.scss';
 const Beer = ({beer}) => {
 
     return (
-        <div>
+        <div className={styles['beer__container']}>
             <img className={styles['beer__img']} src={beer.image_url} alt={`Beer - ${beer.name}`} />
             <h2>{beer.name}</h2>
-            <p>{beer.tagline}</p>
+            <h4>{beer.tagline}</h4>
         </div>
     );
 };

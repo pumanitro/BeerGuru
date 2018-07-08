@@ -1,4 +1,17 @@
 .beer {
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    flex: 1 1 0;
+    margin: 20px;
+    min-width: 330px;
+
+  }
+
   &__img {
     width: 100px;
     height: 150px;
