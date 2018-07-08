@@ -39,6 +39,9 @@
     "react/prop-types": "off",
     "react/no-string-refs": "off",
     "import/no-extraneous-dependencies": "off",
-    "no-throw-literal": "off"
+    "no-throw-literal": "off",
+    "require-yield": "off",
+    "class-methods-use-this": "off",
+    "dot-notation": "off"
   }
 }
