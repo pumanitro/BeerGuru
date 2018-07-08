@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {OrderedMap} from 'immutable';
+import Beer from './Beer/Beer';
 
 const BeersList = ({beers}) => {
 
@@ -8,7 +9,7 @@ const BeersList = ({beers}) => {
         <div>
             {
                 beers.valueSeq().map((beer) => {
-                    return <div key={beer.id}>{beer.name}</div>;
+                    return <Beer key={beer.id} beerData={beer} />;
                 })
             }
         </div>
