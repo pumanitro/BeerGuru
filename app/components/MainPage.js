@@ -1,7 +1,7 @@
 import React from 'react';
 import img from '../assets/images/react_logo_512x512.png';
 
-const App = () => {
+const MainPage = () => {
     return (
         <div>
             <h2 id="heading">Hello ReactJS</h2>
@@ -17,4 +17,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default MainPage;
