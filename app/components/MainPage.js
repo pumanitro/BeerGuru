@@ -15,7 +15,7 @@ const MainPage = ({getMoreBeers, beers}) => {
 
     return (
         <div>
-            <h1>Beer App</h1>
+            <h1>BeerGuru</h1>
             <div className={styles['infinite__container']}>
                 <InfiniteScroll
                     loadMore={loadMoreBeers}

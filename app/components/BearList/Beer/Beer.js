@@ -8,8 +8,8 @@ const Beer = ({beer}) => {
     return (
         <div className={styles['beer__container']}>
             <img className={styles['beer__img']} src={beer.image_url} alt={`Beer - ${beer.name}`} />
-            <h2>{beer.name}</h2>
-            <h4>{beer.tagline}</h4>
+            <div className={styles['beer__name']}>{beer.name}</div>
+            <div className={styles['beer__tagline']}>{beer.tagline}</div>
         </div>
     );
 };
