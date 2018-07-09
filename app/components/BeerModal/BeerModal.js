@@ -4,26 +4,38 @@ import {connect} from 'react-redux';
 import Modal from 'react-modal';
 import {ActionTypes} from '../../redux/actions/ActionTypes';
 import {makeAction} from '../../redux/actions/ActionCreator';
+import styles from './BeerModal.scss';
 
-const BeerModal = () => {
+Modal.setAppElement('#root');
+
+const BeerModal = ({beerModal, closeModal}) => {
 
     return (
-        <Modal>
-            TEST
+        <Modal
+            isOpen={beerModal.isShown}
+            onRequestClose={() => closeModal()}
+            className={styles['modal__container']}
+            overlayClassName={styles['modal__overlay']}
+            contentLabel="Example Modal"
+        >
+            <button type="button" onClick={() => closeModal()}>close</button>
         </Modal>
     );
 };
 
 BeerModal.propTypes = {
-    beers: PropTypes.instanceOf(OrderedMap).isRequired
+    beerModal: PropTypes.shape({
+        beerId: PropTypes.string.isRequired,
+        isShown: PropTypes.bool.isRequired
+    }).isRequired
 };
 
 const mapStateToProps = state => ({
-    beers: state.beers
+    beerModal: state.beerModal
 });
 
 const mapDispatchToProps = {
-    getMoreBeers: makeAction(ActionTypes.beers.GET_MORE_BEERS)
+    closeModal: makeAction(ActionTypes.beerModal.CLOSE_BEER_MODAL)
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BeerModal);
