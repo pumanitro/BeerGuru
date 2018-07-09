@@ -6,6 +6,7 @@ import styles from './MainPage.scss';
 import {makeAction} from '../redux/actions/ActionCreator';
 import {ActionTypes} from '../redux/actions/ActionTypes';
 import BeersList from './BearList/BeersList';
+import BeerModal from './BeerModal/BeerModal';
 
 const MainPage = ({getMoreBeers, beers}) => {
 
@@ -15,6 +16,7 @@ const MainPage = ({getMoreBeers, beers}) => {
 
     return (
         <div>
+            <BeerModal />
             <h1>BeerGuru</h1>
             <div className={styles['infinite__container']}>
                 <InfiniteScroll
