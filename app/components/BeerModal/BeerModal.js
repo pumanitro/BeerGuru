@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import {ActionTypes} from '../../redux/actions/ActionTypes';
 import {makeAction} from '../../redux/actions/ActionCreator';
 import styles from './BeerModal.scss';
-import BeerDetail from '../BeerDetail/BeerDetail';
+import BeerDetail from '../BeerDetails/BeerDetails';
 
 Modal.setAppElement('#root');
 
