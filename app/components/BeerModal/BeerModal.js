@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import {ActionTypes} from '../../redux/actions/ActionTypes';
 import {makeAction} from '../../redux/actions/ActionCreator';
 import styles from './BeerModal.scss';
+import BeerDetail from '../BeerDetail/BeerDetail';
 
 Modal.setAppElement('#root');
 
@@ -18,14 +19,14 @@ const BeerModal = ({beerModal, closeModal}) => {
             overlayClassName={styles['modal__overlay']}
             contentLabel="Example Modal"
         >
-            <button type="button" onClick={() => closeModal()}>close</button>
+            <BeerDetail beerId={beerModal.beerId} />
         </Modal>
     );
 };
 
 BeerModal.propTypes = {
     beerModal: PropTypes.shape({
-        beerId: PropTypes.string.isRequired,
+        beerId: PropTypes.number.isRequired,
         isShown: PropTypes.bool.isRequired
     }).isRequired
 };

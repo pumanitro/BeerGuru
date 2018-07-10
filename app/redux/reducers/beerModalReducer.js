@@ -13,8 +13,8 @@ export function beerModal(state = {
 
     case ActionTypes.beerModal.CLOSE_BEER_MODAL:
         return {
-            isShown: false,
-            beerId: null
+            ...state,
+            isShown: false
         };
 
     default:

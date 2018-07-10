@@ -42,6 +42,7 @@
     "no-throw-literal": "off",
     "require-yield": "off",
     "class-methods-use-this": "off",
+    "react/forbid-prop-types": "off",
     "dot-notation": "off"
   }
 }
