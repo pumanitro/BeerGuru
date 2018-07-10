@@ -26,7 +26,7 @@ const BeerDetails = ({beer}) => {
 };
 
 BeerDetails.propTypes = {
-    beer: PropTypes.object.isRequired,
+    beer: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({

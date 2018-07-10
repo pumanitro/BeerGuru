@@ -3,7 +3,7 @@ import {
 } from 'redux-saga/effects';
 
 import {ActionTypes} from '../actions/ActionTypes';
-import BeerService from '../../services/BeerService';
+import BeerService from '../../services/BeerService/BeerService';
 import {Consts} from '../../Constants';
 
 function* getMoreBeers() {
