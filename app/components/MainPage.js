@@ -7,6 +7,7 @@ import {makeAction} from '../redux/actions/ActionCreator';
 import {ActionTypes} from '../redux/actions/ActionTypes';
 import BeersList from './BearList/BeersList';
 import BeerModal from './BeerModal/BeerModal';
+import Spinner from './common/Spinner/Spinner';
 
 const MainPage = ({getMoreBeers, beers}) => {
 
@@ -23,7 +24,7 @@ const MainPage = ({getMoreBeers, beers}) => {
                     loadMore={loadMoreBeers}
                     hasMore={true || false}
                     threshold={100}
-                    loader={<div className="loader" key={0}>Loading ...</div>}
+                    loader={<Spinner />}
                 >
                     <BeersList beers={beers} />
                 </InfiniteScroll>
