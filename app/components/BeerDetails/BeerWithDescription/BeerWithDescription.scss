@@ -1,0 +1,10 @@
+.beer-with-description {
+  &__container {
+    display: flex;
+  }
+
+  &__img {
+    max-height: 400px;
+    margin: 0 100px;
+  }
+}

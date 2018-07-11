@@ -3,25 +3,13 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './BeerDetails.scss';
 import SimilarBeers from './SimilarBeers/SimilarBeers';
+import BeerWithDescription from './BeerWithDescription/BeerWithDescription';
 
 const BeerDetails = ({beer}) => {
 
     return (
-        <div className={styles['beer-detail__container']}>
-            <img className={styles['beer-detail__img']} src={beer.image_url} alt={`Beer - ${beer.name}`} />
-            <div>
-                <h2>{beer.name}</h2>
-                <h3>{beer.tagline}</h3>
-                <div>
-                    <span>IBU: {beer.ibu}</span>
-                    <span>ABV: {beer.abv}</span>
-                    <span>EBC: {beer.ebc}</span>
-                </div>
-                <h4>Description:</h4>
-                <p>{beer.description}</p>
-                <h4>Brewer tips:</h4>
-                <p>{beer.brewers_tips}</p>
-            </div>
+        <div className={styles['beer-details__container']}>
+            <BeerWithDescription beer={beer} />
             <SimilarBeers beer={beer} />
         </div>
     );

@@ -1,12 +1,7 @@
-.beer-detail {
-
+.beer-details {
   &__container {
     padding: 60px;
     display: flex;
-  }
-
-  &__img {
-    max-height: 400px;
-    margin: 0 100px;
+    flex-direction: column;
   }
 }
