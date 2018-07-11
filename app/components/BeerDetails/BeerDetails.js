@@ -50,7 +50,7 @@ BeerDetails.defaultProps = {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-    beer: state.beers.get(ownProps.match.params.id || ownProps.beerId)
+    beer: state.beers.get(+ownProps.match.params.id || ownProps.beerId)
 });
 
 const mapDispatchToProps = {

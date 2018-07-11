@@ -16,13 +16,6 @@ function* getMoreBeers() {
 
         const moreBeers = yield call(BeerService.getMoreBeers, beerPage);
 
-        // Initializing future possibility of fetching beer detail.
-        moreBeers.forEach((beer) => {
-            beer.similarBeers = {
-                areFetched: false
-            };
-        });
-
         yield put({
             type: ActionTypes.beers.GET_MORE_BEERS_SUCCEEDED,
             payload: moreBeers

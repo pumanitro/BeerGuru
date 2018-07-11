@@ -26,6 +26,13 @@ class BeerService {
         };
     }
 
+    // Initializing future possibility of fetching beer detail.
+    addAdditionalFieldsToBeer = (beer) => {
+        beer.similarBeers = {
+            areFetched: false
+        };
+    };
+
     generatePunkApiEndpoint = (options) => {
 
         let params = '';
@@ -51,6 +58,8 @@ class BeerService {
 
                 const beerArray = await resp.json();
 
+                this.addAdditionalFieldsToBeer(beerArray[0]);
+
                 return beerArray[0];
             })
             .catch(() => {
@@ -63,8 +72,15 @@ class BeerService {
             [this.API_CONSTS.SUPPORTED_OPTIONS.PAGE]: page,
             [this.API_CONSTS.SUPPORTED_OPTIONS.PER_PAGE]: beersPerPage
         }))
-            .then((resp) => {
-                return resp.json();
+            .then(async (resp) => {
+
+                const moreBeers = await resp.json();
+
+                moreBeers.forEach((beer) => {
+                    this.addAdditionalFieldsToBeer(beer);
+                });
+
+                return moreBeers;
             })
             .catch(() => {
                 console.error(`Can't get beer page with page set to ${page} and beersPer page to ${beersPerPage}`);
