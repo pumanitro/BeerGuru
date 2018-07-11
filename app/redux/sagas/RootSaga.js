@@ -1,9 +1,10 @@
 import {all} from 'redux-saga/effects';
-import {watchGetMoreBeers, watchGetSimilarBeers} from './BeerSaga';
+import {watchGetMoreBeers, watchGetSimilarBeers, watchGetBeer} from './BeerSaga';
 
 export default function* RootSaga() {
     yield all([
         watchGetMoreBeers(),
-        watchGetSimilarBeers()
+        watchGetSimilarBeers(),
+        watchGetBeer()
     ]);
 }

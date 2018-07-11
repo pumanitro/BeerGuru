@@ -11,6 +11,13 @@ export function beers(state = OrderedMap(), action) {
 
         return state;
 
+    case ActionTypes.beers.GET_BEER_SUCCEEDED: {
+
+        const newBeer = action.payload;
+
+        return state.set(newBeer.id, newBeer);
+    }
+
     case ActionTypes.beers.GET_SIMILAR_BEERS_SUCCEEDED:
 
         state = state.set(action.payload.beer.id, {

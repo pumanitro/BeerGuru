@@ -5,14 +5,17 @@ import styles from './BeerDetails.scss';
 import SimilarBeers from './SimilarBeers/SimilarBeers';
 import BeerWithDescription from './BeerWithDescription/BeerWithDescription';
 import Spinner from '../common/Spinner/Spinner';
+import {ActionTypes} from '../../redux/actions/ActionTypes';
+import {makeAction} from '../../redux/actions/ActionCreator';
 
 class BeerDetails extends React.Component {
 
     componentDidMount() {
-        const {match} = this.props;
+        const {match, getBeer, beer} = this.props;
 
-        console.warn(match.params.id);
-
+        if (!beer) {
+            getBeer(match.params.id);
+        }
     }
 
     render() {
@@ -38,6 +41,7 @@ class BeerDetails extends React.Component {
 }
 
 BeerDetails.propTypes = {
+    getBeer: PropTypes.func.isRequired,
     beer: PropTypes.object
 };
 
@@ -49,4 +53,8 @@ const mapStateToProps = (state, ownProps) => ({
     beer: state.beers.get(ownProps.match.params.id || ownProps.beerId)
 });
 
-export default connect(mapStateToProps, null)(BeerDetails);
+const mapDispatchToProps = {
+    getBeer: makeAction(ActionTypes.beers.GET_BEER)
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BeerDetails);

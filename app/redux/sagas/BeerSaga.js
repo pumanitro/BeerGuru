@@ -55,10 +55,31 @@ function* getSimilarBeers(action) {
     }
 }
 
+function* getBeer(action) {
+    try {
+
+        const beerId = action.payload;
+
+        const newBeer = yield call(BeerService.getBeer, beerId);
+
+        yield put({
+            type: ActionTypes.beers.GET_BEER_SUCCEEDED,
+            payload: newBeer
+        });
+    }
+    catch (e) {
+        console.error("Can't get one, given beer");
+    }
+}
+
 export function* watchGetMoreBeers() {
     yield takeEvery(ActionTypes.beers.GET_MORE_BEERS, getMoreBeers);
 }
 
 export function* watchGetSimilarBeers() {
     yield takeEvery(ActionTypes.beers.GET_SIMILAR_BEERS, getSimilarBeers);
+}
+
+export function* watchGetBeer() {
+    yield takeEvery(ActionTypes.beers.GET_BEER, getBeer);
 }

@@ -13,6 +13,7 @@ class BeerService {
                 EBC: 5
             },
             SUPPORTED_OPTIONS: {
+                IDS: 'ids',
                 PAGE: 'page',
                 PER_PAGE: 'per_page',
                 ABV_GT: 'abv_gt',
@@ -40,6 +41,21 @@ class BeerService {
         params = params.slice(0, -1);
 
         return `${this.API_CONSTS.ROOT_ENDPOINT}?${params}`;
+    };
+
+    getBeer = (id) => {
+        return fetch(this.generatePunkApiEndpoint({
+            [this.API_CONSTS.SUPPORTED_OPTIONS.IDS]: id
+        }))
+            .then(async (resp) => {
+
+                const beerArray = await resp.json();
+
+                return beerArray[0];
+            })
+            .catch(() => {
+                console.error(`Can't get beer with id ${id}`);
+            });
     };
 
     getBeers = (page, beersPerPage) => {
