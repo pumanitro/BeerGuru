@@ -1,5 +1,12 @@
+@import '../../../assets/scss/theme';
+
 .similar-beers{
   &__container {
     float: right;
+  }
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

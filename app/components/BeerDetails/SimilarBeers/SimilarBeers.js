@@ -26,9 +26,11 @@ class SimilarBeers extends React.Component {
                         ? (
                             <div className={styles['similar-beers__container']}>
                                 <h3> Similar: </h3>
-                                <SimilarBeer beer={beer.similarBeers.abvBeer} />
-                                <SimilarBeer beer={beer.similarBeers.ibuBeer} />
-                                <SimilarBeer beer={beer.similarBeers.ebcBeer} />
+                                <div className={styles['similar-beers__wrapper']}>
+                                    <SimilarBeer beer={beer.similarBeers.abvBeer} />
+                                    <SimilarBeer beer={beer.similarBeers.ibuBeer} />
+                                    <SimilarBeer beer={beer.similarBeers.ebcBeer} />
+                                </div>
                             </div>
                         )
                         : <Spinner />
