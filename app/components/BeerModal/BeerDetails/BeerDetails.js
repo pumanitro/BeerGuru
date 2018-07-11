@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import styles from './BeerDetails.scss';
 import SimilarBeers from './SimilarBeers/SimilarBeers';
 import BeerWithDescription from './BeerWithDescription/BeerWithDescription';
-import Spinner from '../common/Spinner/Spinner';
-import {ActionTypes} from '../../redux/actions/ActionTypes';
-import {makeAction} from '../../redux/actions/ActionCreator';
+import Spinner from '../../common/Spinner/Spinner';
+import {ActionTypes} from '../../../redux/actions/ActionTypes';
+import {makeAction} from '../../../redux/actions/ActionCreator';
 
 class BeerDetails extends React.Component {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import MainPage from '../components/MainPage';
-import BeerDetails from '../components/BeerDetails/BeerDetails';
+import MainPage from '../components/MainPage/MainPage';
+import BeerDetails from '../components/BeerModal/BeerDetails/BeerDetails';
 
 const Root = () => {
     return (

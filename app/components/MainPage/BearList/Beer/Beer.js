@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import styles from './Beer.scss';
-import {ActionTypes} from '../../../redux/actions/ActionTypes';
-import {makeAction} from '../../../redux/actions/ActionCreator';
+import {ActionTypes} from '../../../../redux/actions/ActionTypes';
+import {makeAction} from '../../../../redux/actions/ActionCreator';
 
 const Beer = ({beer, openModal}) => {
 

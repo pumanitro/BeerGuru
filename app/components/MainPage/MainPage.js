@@ -3,11 +3,11 @@ import InfiniteScroll from 'react-infinite-scroller';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './MainPage.scss';
-import {makeAction} from '../redux/actions/ActionCreator';
-import {ActionTypes} from '../redux/actions/ActionTypes';
+import {makeAction} from '../../redux/actions/ActionCreator';
+import {ActionTypes} from '../../redux/actions/ActionTypes';
 import BeersList from './BearList/BeersList';
-import BeerModal from './BeerModal/BeerModal';
-import Spinner from './common/Spinner/Spinner';
+import BeerModal from '../BeerModal/BeerModal';
+import Spinner from '../common/Spinner/Spinner';
 
 const MainPage = ({getMoreBeers, beers, shouldTakeMoreBeers}) => {
 

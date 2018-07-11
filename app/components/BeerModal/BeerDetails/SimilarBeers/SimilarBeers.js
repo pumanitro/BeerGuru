@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionTypes} from '../../../redux/actions/ActionTypes';
-import {makeAction} from '../../../redux/actions/ActionCreator';
-import Spinner from '../../common/Spinner/Spinner';
+import {ActionTypes} from '../../../../redux/actions/ActionTypes';
+import {makeAction} from '../../../../redux/actions/ActionCreator';
+import Spinner from '../../../common/Spinner/Spinner';
 import SimilarBeer from './SimilarBeer/SimilarBeer';
 import styles from './SimilarBeers.scss';
 
