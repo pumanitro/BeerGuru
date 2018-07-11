@@ -15,7 +15,10 @@ export function beers(state = OrderedMap(), action) {
 
         state = state.set(action.payload.beer.id, {
             ...action.payload.beer,
-            similarBeers: action.payload.similarBeers
+            similarBeers: {
+                ...action.payload.similarBeers,
+                areFetched: true
+            }
         });
 
         return state;
