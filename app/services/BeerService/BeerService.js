@@ -95,16 +95,16 @@ class BeerService {
         };
 
         if (indicator === 'abv') {
-            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.ABV_GT] = Math.floor(beer.abv) - this.API_CONSTS.TOLERANCE.ABV;
-            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.ABV_LT] = Math.ceil(beer.abv) + this.API_CONSTS.TOLERANCE.ABV;
+            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.ABV_GT] = Math.max(0, Math.floor(beer.abv) - this.API_CONSTS.TOLERANCE.ABV);
+            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.ABV_LT] = Math.max(0, Math.ceil(beer.abv) + this.API_CONSTS.TOLERANCE.ABV);
         }
         else if (indicator === 'ibu') {
-            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.IBU_GT] = Math.floor(beer.ibu) - this.API_CONSTS.TOLERANCE.IBU;
-            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.IBU_LT] = Math.ceil(beer.ibu) + this.API_CONSTS.TOLERANCE.IBU;
+            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.IBU_GT] = Math.max(0, Math.floor(beer.ibu) - this.API_CONSTS.TOLERANCE.IBU);
+            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.IBU_LT] = Math.max(0, Math.ceil(beer.ibu) + this.API_CONSTS.TOLERANCE.IBU);
         }
         else if (indicator === 'ebc') {
-            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.EBC_GT] = Math.floor(beer.ebc) - this.API_CONSTS.TOLERANCE.EBC;
-            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.EBC_LT] = Math.ceil(beer.ebc) + this.API_CONSTS.TOLERANCE.EBC;
+            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.EBC_GT] = Math.max(0, Math.floor(beer.ebc) - this.API_CONSTS.TOLERANCE.EBC);
+            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.EBC_LT] = Math.max(0, Math.ceil(beer.ebc) + this.API_CONSTS.TOLERANCE.EBC);
         }
 
         return fetch(this.generatePunkApiEndpoint({...endpointOptions}))
