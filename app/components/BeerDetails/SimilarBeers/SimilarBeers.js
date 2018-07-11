@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {ActionTypes} from '../../../redux/actions/ActionTypes';
 import {makeAction} from '../../../redux/actions/ActionCreator';
 import Spinner from '../../common/Spinner/Spinner';
+import SimilarBeer from './SimilarBeer/SimilarBeer';
+import styles from './SimilarBeers.scss';
 
 class SimilarBeers extends React.Component {
 
@@ -22,10 +24,11 @@ class SimilarBeers extends React.Component {
                 {
                     beer.similarBeers.areFetched
                         ? (
-                            <div>
-                                <div>{beer.similarBeers.abvBeer.name}</div>
-                                <div>{beer.similarBeers.ibuBeer.name}</div>
-                                <div>{beer.similarBeers.ebcBeer.name}</div>
+                            <div className={styles['similar-beers__container']}>
+                                <h3> Similar: </h3>
+                                <SimilarBeer beer={beer.similarBeers.abvBeer} />
+                                <SimilarBeer beer={beer.similarBeers.ibuBeer} />
+                                <SimilarBeer beer={beer.similarBeers.ebcBeer} />
                             </div>
                         )
                         : <Spinner />

@@ -1,0 +1,10 @@
+.similar-beer {
+  &__img {
+    width: 150px;
+    height: 150px;
+    padding: 20px;
+    margin: 10px;
+    object-fit: contain;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+}
