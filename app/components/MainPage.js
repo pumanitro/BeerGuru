@@ -24,7 +24,7 @@ const MainPage = ({getMoreBeers, beers}) => {
                     loadMore={loadMoreBeers}
                     hasMore={true || false}
                     threshold={100}
-                    loader={<Spinner />}
+                    loader={<Spinner key={0} />}
                 >
                     <BeersList beers={beers} />
                 </InfiniteScroll>

@@ -7,6 +7,11 @@ class BeerService {
             ROOT_ENDPOINT: 'https://api.punkapi.com/v2/beers',
             BEERS_PER_PAGE: Consts.BEERS_PER_PAGE,
             MAX_BEERS_PER_PAGE: 80,
+            TOLERANCE: {
+                ABV: 0,
+                IBU: 10,
+                EBC: 5
+            },
             SUPPORTED_OPTIONS: {
                 PAGE: 'page',
                 PER_PAGE: 'per_page',
@@ -54,19 +59,78 @@ class BeerService {
         return this.getBeers(page, this.API_CONSTS.BEERS_PER_PAGE);
     };
 
-    getSimilarBeers = (beer) => {
+    findBestBeerMatch = (retrievedBeers, beer, indicator) => {
+        if (retrievedBeers.length <= 1) {
+            return null;
+        }
 
-        return fetch(this.generatePunkApiEndpoint({
-            [this.API_CONSTS.SUPPORTED_OPTIONS.ABV_GT]: Math.floor(beer.abv),
-            [this.API_CONSTS.SUPPORTED_OPTIONS.ABV_LT]: Math.ceil(beer.abv),
-            [this.API_CONSTS.SUPPORTED_OPTIONS.PER_PAGE]: this.MAX_BEERS_PER_PAGE
-        }))
-            .then((resp) => {
-                return resp.json();
+        // Little complicated but reduced amount of iteration
+        const startDifference = Math.abs(retrievedBeers[0].id === beer.id ? retrievedBeers[1][indicator] : retrievedBeers[0][indicator] - beer[indicator]);
+
+        const bestMatchIndex = retrievedBeers.reduce((accumulator, retrievedBeer, index) => {
+            const actualDifference = Math.abs(retrievedBeer[indicator] - beer[indicator]);
+
+            if (retrievedBeer.id !== beer.id && accumulator.difference > actualDifference) {
+                return {
+                    difference: actualDifference,
+                    profileIndex: index
+                };
+            }
+
+            return accumulator;
+        }, {
+            difference: startDifference,
+            profileIndex: 0
+        }).profileIndex;
+
+        return retrievedBeers[bestMatchIndex];
+
+    };
+
+    // That logic should be on the beckend side
+    getSimilarBeerBy = (indicator, beer) => {
+
+        const endpointOptions = {
+            [this.API_CONSTS.SUPPORTED_OPTIONS.PER_PAGE]: this.API_CONSTS.MAX_BEERS_PER_PAGE
+        };
+
+        if (indicator === 'abv') {
+            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.ABV_GT] = Math.floor(beer.abv) - this.API_CONSTS.TOLERANCE.ABV;
+            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.ABV_LT] = Math.ceil(beer.abv) + this.API_CONSTS.TOLERANCE.ABV;
+        }
+        else if (indicator === 'ibu') {
+            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.IBU_GT] = Math.floor(beer.ibu) - this.API_CONSTS.TOLERANCE.IBU;
+            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.IBU_LT] = Math.ceil(beer.ibu) + this.API_CONSTS.TOLERANCE.IBU;
+        }
+        else if (indicator === 'ebc') {
+            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.EBC_GT] = Math.floor(beer.ebc) - this.API_CONSTS.TOLERANCE.EBC;
+            endpointOptions[this.API_CONSTS.SUPPORTED_OPTIONS.EBC_LT] = Math.ceil(beer.ebc) + this.API_CONSTS.TOLERANCE.EBC;
+        }
+
+        return fetch(this.generatePunkApiEndpoint({...endpointOptions}))
+            .then(async (resp) => {
+
+                const retrievedBeers = await resp.json();
+
+                return this.findBestBeerMatch(retrievedBeers, beer, indicator);
             })
             .catch(() => {
-                console.error(`Can't get beer with abv from ${Math.floor(beer.abv)} to ${Math.ceil(beer.abv)}`);
+                console.error(`Can't get similar beer by ${indicator} for beer with id ${beer.id}`);
             });
+
+    };
+
+    getSimilarBeers = async (beer) => {
+
+        const abvBeer = await this.getSimilarBeerBy('abv', beer);
+        const ibuBeer = await this.getSimilarBeerBy('ibu', beer);
+        const ebcBeer = await this.getSimilarBeerBy('ebc', beer);
+
+        return {
+            abvBeer,
+            ibuBeer,
+            ebcBeer
+        };
 
     }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './BeerDetails.scss';
+import SimilarBeers from './SimilarBeers/SimilarBeers';
 
 const BeerDetails = ({beer}) => {
 
@@ -21,6 +22,7 @@ const BeerDetails = ({beer}) => {
                 <h4>Brewer tips:</h4>
                 <p>{beer.brewers_tips}</p>
             </div>
+            <SimilarBeers beer={beer} />
         </div>
     );
 };
