@@ -12,7 +12,7 @@ const BeerWithDescription = ({beer}) => {
                 <h3>{beer.tagline}</h3>
                 <div>
                     <span>IBU: {beer.ibu}</span>
-                    <span>ABV: {beer.abv}</span>
+                    <span>ABV: {beer.abv} %</span>
                     <span>EBC: {beer.ebc}</span>
                 </div>
                 <h4>Description:</h4>
