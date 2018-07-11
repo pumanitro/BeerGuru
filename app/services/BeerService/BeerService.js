@@ -59,6 +59,7 @@ class BeerService {
         return this.getBeers(page, this.API_CONSTS.BEERS_PER_PAGE);
     };
 
+    // That logic should be on the beckend side too
     findBestBeerMatch = (retrievedBeers, beer, indicator) => {
         if (retrievedBeers.length <= 1) {
             return null;

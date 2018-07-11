@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BeerService from '../../../services/BeerService/BeerService';
+import {connect} from 'react-redux';
+import {ActionTypes} from '../../../redux/actions/ActionTypes';
+import {makeAction} from '../../../redux/actions/ActionCreator';
 
 class SimilarBeers extends React.Component {
 
     componentDidMount() {
 
-        const {beer} = this.props;
-
-        BeerService.getSimilarBeers(beer)
-            .then((resp) => {
-                console.warn(resp);
-            });
+        const {beer, getSimilarBeers} = this.props;
+        getSimilarBeers(beer);
     }
 
     render() {
@@ -27,4 +25,9 @@ SimilarBeers.propTypes = {
     beer: PropTypes.object.isRequired
 };
 
-export default SimilarBeers;
+const mapDispatchToProps = {
+    getSimilarBeers: makeAction(ActionTypes.beers.GET_SIMILAR_BEERS)
+};
+
+export default connect(null, mapDispatchToProps)(SimilarBeers);
+

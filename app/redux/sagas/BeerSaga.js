@@ -28,6 +28,30 @@ function* getMoreBeers() {
 
 }
 
+function* getSimilarBeers(action) {
+    try {
+
+        const beer = action.payload;
+
+        const similarBeers = yield call(BeerService.getSimilarBeers, beer);
+
+        yield put({
+            type: ActionTypes.beers.GET_SIMILAR_BEERS_SUCCEEDED,
+            payload: {
+                similarBeers,
+                beer
+            }
+        });
+    }
+    catch (e) {
+        console.error("Can't get similar beers");
+    }
+}
+
 export function* watchGetMoreBeers() {
     yield takeEvery(ActionTypes.beers.GET_MORE_BEERS, getMoreBeers);
+}
+
+export function* watchGetSimilarBeers() {
+    yield takeEvery(ActionTypes.beers.GET_SIMILAR_BEERS, getSimilarBeers);
 }
