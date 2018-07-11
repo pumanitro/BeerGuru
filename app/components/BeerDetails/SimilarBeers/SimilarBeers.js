@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionTypes} from '../../../redux/actions/ActionTypes';
 import {makeAction} from '../../../redux/actions/ActionCreator';
+import Spinner from '../../common/Spinner/Spinner';
 
 class SimilarBeers extends React.Component {
 
@@ -13,9 +14,22 @@ class SimilarBeers extends React.Component {
     }
 
     render() {
+
+        const {beer} = this.props;
+
         return (
             <div>
-                <div> Beer 1</div>
+                {
+                    beer.similarBeers.areFetched
+                        ? (
+                            <div>
+                                <div>{beer.similarBeers.abvBeer.name}</div>
+                                <div>{beer.similarBeers.ibuBeer.name}</div>
+                                <div>{beer.similarBeers.ebcBeer.name}</div>
+                            </div>
+                        )
+                        : <Spinner />
+                }
             </div>
         );
     }
