@@ -9,7 +9,7 @@ import BeersList from './BearList/BeersList';
 import BeerModal from './BeerModal/BeerModal';
 import Spinner from './common/Spinner/Spinner';
 
-const MainPage = ({getMoreBeers, beers}) => {
+const MainPage = ({getMoreBeers, beers, shouldTakeMoreBeers}) => {
 
     const loadMoreBeers = () => {
         getMoreBeers();
@@ -22,7 +22,7 @@ const MainPage = ({getMoreBeers, beers}) => {
             <div className={styles['infinite__container']}>
                 <InfiniteScroll
                     loadMore={loadMoreBeers}
-                    hasMore={true || false}
+                    hasMore={shouldTakeMoreBeers}
                     threshold={100}
                     loader={<Spinner key={0} />}
                 >
@@ -34,11 +34,13 @@ const MainPage = ({getMoreBeers, beers}) => {
 };
 
 MainPage.propTypes = {
-    getMoreBeers: PropTypes.func.isRequired
+    getMoreBeers: PropTypes.func.isRequired,
+    shouldTakeMoreBeers: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
-    beers: state.beers
+    beers: state.beers,
+    shouldTakeMoreBeers: state.shouldTakeMoreBeers
 });
 
 const mapDispatchToProps = {

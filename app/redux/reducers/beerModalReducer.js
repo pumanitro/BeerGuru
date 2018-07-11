@@ -1,7 +1,7 @@
 import {ActionTypes} from '../actions/ActionTypes';
 
 export function beerModal(state = {
-    beerId: null,
+    beerId: 1,
     isShown: false
 }, action) {
     switch (action.type) {

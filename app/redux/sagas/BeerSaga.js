@@ -16,10 +16,20 @@ function* getMoreBeers() {
 
         const moreBeers = yield call(BeerService.getMoreBeers, beerPage);
 
-        yield put({
-            type: ActionTypes.beers.GET_MORE_BEERS_SUCCEEDED,
-            payload: moreBeers
-        });
+        const lastNewBeer = moreBeers[moreBeers.length - 1];
+
+        if (beers.has(lastNewBeer.id)) {
+            yield put({
+                type: ActionTypes.beers.STOP_TAKING_MORE_BEERS,
+                payload: null
+            });
+        }
+        else {
+            yield put({
+                type: ActionTypes.beers.GET_MORE_BEERS_SUCCEEDED,
+                payload: moreBeers
+            });
+        }
 
     }
     catch (e) {
