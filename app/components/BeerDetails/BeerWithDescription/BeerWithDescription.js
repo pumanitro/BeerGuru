@@ -10,10 +10,10 @@ const BeerWithDescription = ({beer}) => {
             <div>
                 <h2>{beer.name}</h2>
                 <h3>{beer.tagline}</h3>
-                <div>
-                    <span>IBU: {beer.ibu}</span>
-                    <span>ABV: {beer.abv} %</span>
-                    <span>EBC: {beer.ebc}</span>
+                <div className={styles['beer-with-description__indicator-wrapper']}>
+                    <span><b>IBU</b>: {beer.ibu}</span>
+                    <span><b>ABV</b>: {beer.abv}%</span>
+                    <span><b>EBC</b>: {beer.ebc}</span>
                 </div>
                 <h4>Description:</h4>
                 <p>{beer.description}</p>
