@@ -11,8 +11,8 @@ const Beer = ({beer, openModal}) => {
         // div with role button and onKeyPress for people with physical disabilities
         <div role="button" tabIndex={0} className={styles['beer__container']} onClick={() => openModal(beer.id)} onKeyPress={() => openModal(beer.id)}>
             <img className={styles['beer__img']} src={beer.image_url} alt={`Beer - ${beer.name}`} />
-            <div className={styles['beer__name']}>{beer.name}</div>
-            <div className={styles['beer__tagline']}>{beer.tagline}</div>
+            <h2 className={styles['beer__name']}>{beer.name}</h2>
+            <h3 className={styles['beer__tagline']}>{beer.tagline}</h3>
         </div>
     );
 };

@@ -18,7 +18,7 @@ const MainPage = ({getMoreBeers, beers, shouldTakeMoreBeers}) => {
     return (
         <div>
             <BeerModal />
-            <h1>BeerGuru</h1>
+            <h1>BEERGURU</h1>
             <div className={styles['infinite__container']}>
                 <InfiniteScroll
                     loadMore={loadMoreBeers}
