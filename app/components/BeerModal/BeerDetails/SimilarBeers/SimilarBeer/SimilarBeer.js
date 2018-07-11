@@ -14,7 +14,11 @@ const SimilarBeer = ({beer}) => {
 };
 
 SimilarBeer.propTypes = {
-    beer: PropTypes.object.isRequired
+    beer: PropTypes.object
+};
+
+SimilarBeer.defaultProps = {
+    beer: null
 };
 
 export default SimilarBeer;
