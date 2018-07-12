@@ -1,13 +1,13 @@
 # BeerGuru - small app for recruitment purpose
 
 Used this technologies:
-    - React
-    - Redux
-    - Saga
-    - Jest
-    - Webpack
-    - Babel
-    - Sass
+- React
+- Redux
+- Saga
+- Jest
+- Webpack
+- Babel
+- Sass
 
 ## Task requirements
 
