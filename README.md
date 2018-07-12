@@ -1,4 +1,4 @@
-# BeerGuru - small app with for recruitment purpose
+# BeerGuru - small app for recruitment purpose
 
 Used this technologies:
     - React
