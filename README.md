@@ -2,7 +2,7 @@
 
 ## How to play with
 
-Simply type download repository and type:
+Simply download repository and type:
 `npm install` && `npm start`
 
 ## Used this technologies:
