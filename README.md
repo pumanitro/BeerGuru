@@ -1,6 +1,11 @@
 # BeerGuru - small app for recruitment purpose
 
-Used this technologies:
+## How to play with
+
+Simply type download repository and type:
+`npm install` && `npm start`
+
+## Used this technologies:
 - React
 - Redux
 - Saga
