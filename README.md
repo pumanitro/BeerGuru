@@ -5,14 +5,16 @@
 Simply download repository and type:
 `npm install` && `npm start`
 
-## Used this technologies:
+## Used this technologies
 - React
 - Redux
 - Saga
 - Jest
 - Webpack
 - Babel
+- ESLint
 - Sass
+- Immutable
 
 ## Task requirements
 
